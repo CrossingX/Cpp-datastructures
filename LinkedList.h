@@ -15,14 +15,13 @@ class LinkedList{
     public:
         LinkedList();
         ~LinkedList();
-        LinkedList<T> operator+(LinkedList<T>* L);
         void insert(int pos, T x);  //insert the Node whose data is x between pos and pos+1(pos starts with 0 which is the position of head)
         void deleteAtPos(int pos);  //delete the Node at pos
         void deleteAtData(T x);     //delete all the Nodes whose data is x
         int getLength();
         void travelList();
-        void reverseList();
-        void bubbleSort();
+        void reverseList();         //reverse the list but head is fixed
+        void bubbleSort();          //from min to max(change '<' into '>' if you want it from max to min)
     private:
         Node<T>* head;
         int length;
@@ -91,4 +90,34 @@ void LinkedList<T>::travelList(){
         cout<<"->"<<p->data;
     }
     cout<<endl;
+}
+template <class T>
+void LinkedList<T>::reverseList(){
+    if(length > 1){
+        Node<T>* p = head->next;
+        Node<T>* q = head->next->next;
+        Node<T>* r = nullptr;
+        while(q){
+            p->next = r;
+            r = p;
+            p = q;
+            q = q->next;
+        }
+        p->next = r;
+        head->next = p;
+    }
+}
+template <class T>
+void LinkedList<T>::bubbleSort(){
+    Node<T>* p = head->next;
+    Node<T>* q = head->next;
+    for(; p->next != nullptr; p = p->next){
+        for(q = head->next; q->next != nullptr; q = q->next){
+            if(q->data>q->next->data){
+                T temp = q->data;
+                q->data = q->next->data;
+                q->next->data = temp;
+            }
+        }
+    }
 }
