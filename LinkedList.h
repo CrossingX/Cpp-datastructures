@@ -1,5 +1,6 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 #include<iostream>
-
 using namespace std;
 //the definition of Node
 template <class T>
@@ -121,3 +122,4 @@ void LinkedList<T>::bubbleSort(){
         }
     }
 }
+#endif
