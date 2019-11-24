@@ -1,3 +1,4 @@
+//implemented with an array
 #ifndef STACK_H
 #define STACK_H
 #define MAX_SIZE 10005
@@ -15,6 +16,7 @@ public:
     void pop();
     T getTop();
     int getLength();
+    void display();
 private:
     int top;
     T* s;
@@ -30,11 +32,11 @@ Stack<T>::~Stack(){
 }
 template <class T>
 bool Stack<T>::isEmpty(){
-    return (top==-1);
+    return (top == -1);
 }
 template <class T>
 void Stack<T>::push(T x){
-    s[top+1] = x;
+    s[top + 1] = x;
     top++;
 }
 template <class T>
@@ -48,6 +50,13 @@ T Stack<T>::getTop(){
 }
 template <class T>
 int Stack<T>::getLength(){
-    return (top+1);
+    return (top + 1);
+}
+template <class T>
+void Stack<T>::display(){
+    if(top == -1) cout<<"Empty"<<endl;
+    for(int i = top; i >= 0; i--){
+        cout<<s[i]<<endl;
+    }
 }
 #endif
