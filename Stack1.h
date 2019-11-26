@@ -12,9 +12,9 @@ public:
     Stack();
     ~Stack();
     bool isEmpty();
-    void push(T x);
+    void push(T& x);
     void pop();
-    T getTop();
+    T& getTop();
     int getLength();
     void display();
 private:
@@ -35,7 +35,7 @@ bool Stack<T>::isEmpty(){
     return (top == -1);
 }
 template <class T>
-void Stack<T>::push(T x){
+void Stack<T>::push(T& x){
     if(top + 1 >= MAX_SIZE)
     cout<<"Full"<<endl;
     else{
@@ -52,7 +52,7 @@ void Stack<T>::pop(){
     }
 }
 template <class T>
-T Stack<T>::getTop(){
+T& Stack<T>::getTop(){
     return s[top];
 }
 template <class T>
