@@ -36,13 +36,20 @@ bool Stack<T>::isEmpty(){
 }
 template <class T>
 void Stack<T>::push(T x){
-    s[top + 1] = x;
-    top++;
+    if(top + 1 >= MAX_SIZE)
+    cout<<"Full"<<endl;
+    else{
+        s[top + 1] = x;
+        top++;
+    }
 }
 template <class T>
 void Stack<T>::pop(){
-    s[top] = 0;
-    top--;
+    if(isEmpty()) cout<<"Empty"<<endl;
+    else{
+        s[top] = 0;
+        top--;
+    }
 }
 template <class T>
 T Stack<T>::getTop(){
