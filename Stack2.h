@@ -16,7 +16,7 @@ class Stack{
         Stack();
         ~Stack();
         bool isEmpty();
-        void push(T& x);
+        void push(T x);
         void pop();
         T& getTop();
         int getLength();
@@ -45,7 +45,7 @@ bool Stack<T>::isEmpty(){
     return (length==0);
 }
 template <class T>
-void Stack<T>::push(T& x){
+void Stack<T>::push(T x){
     Node<T>* newNode = new Node<T>(x,top);
     top = newNode;
     length++;

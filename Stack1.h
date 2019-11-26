@@ -8,18 +8,18 @@ using namespace std;
 
 template <class T>
 class Stack{
-public:
-    Stack();
-    ~Stack();
-    bool isEmpty();
-    void push(T& x);
-    void pop();
-    T& getTop();
-    int getLength();
-    void display();
-private:
-    int top;
-    T* s;
+    public:
+        Stack();
+        ~Stack();
+        bool isEmpty();
+        void push(T x);
+        void pop();
+        T& getTop();
+        int getLength();
+        void display();
+    private:
+        int top;
+        T* s;
 };
 template <class T>
 Stack<T>::Stack(){
@@ -35,7 +35,7 @@ bool Stack<T>::isEmpty(){
     return (top == -1);
 }
 template <class T>
-void Stack<T>::push(T& x){
+void Stack<T>::push(T x){
     if(top + 1 >= MAX_SIZE)
     cout<<"Full"<<endl;
     else{
@@ -47,7 +47,6 @@ template <class T>
 void Stack<T>::pop(){
     if(isEmpty()) cout<<"Empty"<<endl;
     else{
-        s[top] = 0;
         top--;
     }
 }
