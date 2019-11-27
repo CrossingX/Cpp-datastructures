@@ -6,3 +6,4 @@ Some simple data structures implemented by C++
 * [Stack(LinkedList)](./Stack2.h)
 * [Queue(Array)](./Queue1.h)
 * [Queue(LinkedList)](./Queue2.h)
+* [Binarytree(Array)](./Binarytree1.h)
