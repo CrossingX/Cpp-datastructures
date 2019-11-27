@@ -20,7 +20,7 @@ class LinkedList{
         void deleteAtPos(int pos);  //delete the Node at pos
         void deleteAtData(T x);     //delete all the Nodes whose data is x
         int getLength();
-        void travelList();
+        void traverseList();
         void reverseList();         //reverse the list but head is fixed
         void bubbleSort();          //from min to max(change '<' into '>' if you want it from max to min)
     private:
@@ -83,7 +83,7 @@ int LinkedList<T>::getLength(){
     return length;
 }
 template <class T>
-void LinkedList<T>::travelList(){
+void LinkedList<T>::traverseList(){
     Node<T>* p = head;
     cout<<"head";
     while(p->next){
