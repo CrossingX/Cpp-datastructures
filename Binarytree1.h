@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-11-27 13:25:29
- * @LastEditTime: 2019-11-28 13:29:51
+ * @LastEditTime: 2019-11-28 13:43:24
  * @Description: Implement a binary tree using an array
  * @FilePath: /src/DS/Cpp-datastructures/Binarytree1.h
  */
@@ -98,20 +98,26 @@ void Binarytree<T>::deleteNode(int pos){
 }
 template <class T>
 void Binarytree<T>::preordertraverse(int i){
-    if(getValue(i)) cout<<getValue(i);
-    if(getLeftChild(i))   preordertraverse(2*i+1);
-    if(getRightChild(i))   preordertraverse(2*i+2);
+    if(getValue(i)) {
+        cout<<getValue(i);
+        preordertraverse(2*i+1);
+        preordertraverse(2*i+2);
+    }
 }
 template <class T>
 void Binarytree<T>::midordertraverse(int i){
-    if(getLeftChild(i))   midordertraverse(2*i+1);
-    if(getValue(i)) cout<<getValue(i);
-    if(getRightChild(i))   midordertraverse(2*i+2);
+    if(getValue(i)) {
+        midordertraverse(2*i+1);
+        cout<<getValue(i);
+        midordertraverse(2*i+2);
+    }
 }
 template <class T>
 void Binarytree<T>::postordertraverse(int i){
-    if(getLeftChild(i))   postordertraverse(2*i+1);
-    if(getRightChild(i))   postordertraverse(2*i+2);
-    if(getValue(i)) cout<<getValue(i);
+    if(getValue(i)) {
+        postordertraverse(2*i+1);
+        postordertraverse(2*i+2);
+        cout<<getValue(i);
+    }
 }
 #endif
