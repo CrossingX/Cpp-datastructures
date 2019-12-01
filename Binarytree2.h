@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-11-28 01:02:10
- * @LastEditTime: 2019-11-28 22:56:03
+ * @LastEditTime: 2019-12-01 13:56:09
  * @Description: Implement a binary tree using a linkedlist
  * @FilePath: /src/DS/Cpp-datastructures/Binarytree2.h
  */
@@ -9,6 +9,7 @@
 #define BINARYTRREE_H
 
 #include<iostream>
+#include<queue>
 using namespace std;
 template <class T>
 class Node{
@@ -35,6 +36,7 @@ class Binarytree{
         void preordertraverse(Node<T>* n);
         void midordertraverse(Node<T>* n);
         void postordertraverse(Node<T>* n);
+        void layerordertraverse();
     private:
         Node<T>* root;
 };
@@ -126,5 +128,17 @@ void Binarytree<T>::postordertraverse(Node<T>* n){
 template <class T>
 Node<T>* Binarytree<T>::getRoot(){
     return root;
+}
+template <class T>
+void Binarytree<T>::layerordertraverse(){
+    queue<Node<T>* > q;
+    q.push(root);
+    while(!q.empty()){
+        if((q.front())->lchild != nullptr) q.push((q.front())->lchild);
+        if((q.front())->rchild != nullptr) q.push((q.front())->rchild);
+        cout<<q.front()->value;
+        q.pop();
+    }
+    cout<<endl;
 }
 #endif

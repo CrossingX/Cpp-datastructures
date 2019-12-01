@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-11-27 13:25:29
- * @LastEditTime: 2019-11-28 13:43:24
+ * @LastEditTime: 2019-12-01 13:42:21
  * @Description: Implement a binary tree using an array
  * @FilePath: /src/DS/Cpp-datastructures/Binarytree1.h
  */
@@ -28,6 +28,7 @@ class Binarytree{
         void preordertraverse(int i);
         void midordertraverse(int i);
         void postordertraverse(int i);
+        void layerordertraverse();
     private:
         T* t;
         int count;
@@ -119,5 +120,17 @@ void Binarytree<T>::postordertraverse(int i){
         postordertraverse(2*i+2);
         cout<<getValue(i);
     }
+}
+template <class T>
+void Binarytree<T>::layerordertraverse(){
+    int cnt = 0;
+    for(int i = 0; i < MAX_SIZE; i++){
+        if(cnt==count) break;
+        if(t[i] != 0) {
+            cout<<t[i]<<" ";
+            cnt++;
+        }
+    }
+    cout<<endl;
 }
 #endif
