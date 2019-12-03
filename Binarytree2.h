@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-11-28 01:02:10
- * @LastEditTime: 2019-12-01 13:56:09
+ * @LastEditTime: 2019-12-02 22:01:19
  * @Description: Implement a binary tree using a linkedlist
  * @FilePath: /src/DS/Cpp-datastructures/Binarytree2.h
  */

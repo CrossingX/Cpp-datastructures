@@ -10,3 +10,4 @@ Some simple data structures implemented by C++
 * [Binarytree(LinkedList)](./Binarytree2.h)
     * [Buildbinarytreefrompreandmid](./Buildbinarytreefrompreandmid.cpp)
     * [Buildbinarytreefrommidandpost](./Buildbinarytreefrommidandpost.cpp)
+    * [Numbersofbinarytreefrompreandpost](./Numbersofbinarytreefrompreandpost.cpp)
