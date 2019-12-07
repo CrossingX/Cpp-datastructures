@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-06 23:46:19
- * @LastEditTime: 2019-12-07 15:16:54
+ * @LastEditTime: 2019-12-07 15:28:15
  * @Description: Implement a binary search tree using a linkedlist
  * @FilePath: /src/DS/Cpp-datastructures/BinarySearchtree.h
  */
@@ -29,7 +29,7 @@ class Binarysearchtree{
         void deleteNode(T x, Node<T>* a);   // a should be root
         Node<T>* findMax();
         Node<T>* findMin();
-        Node<T>* find(T x, Node<T>* a);     // a should be root
+        Node<T>* find(T x);     // a should be root
         void destroyNode(Node<T>*& a);           // a should be root
         void preordertraverse(Node<T>* a);
         void midordertraverse(Node<T>* a);
@@ -121,11 +121,18 @@ Node<T>* Binarysearchtree<T>::findMin(){
     return p;
 }
 template <class T>
-Node<T>* Binarysearchtree<T>::find(T x, Node<T>* a){
-    if(a == nullptr) return nullptr;
-    if(a->value == x) return a;
-    else if(a->value > x) find(x, a->lchild);
-    else if(a->value < x) find(x, a->rchild);
+Node<T>* Binarysearchtree<T>::find(T x){ //if recurse, require another parameter which is the Node<T>* a
+    // if(a == nullptr) return nullptr;
+    // if(a->value == x) return a;
+    // else if(a->value > x) find(x, a->lchild);
+    // else if(a->value < x) find(x, a->rchild);
+    Node<T>* p = root;
+    while(p){
+        if(p->value > x) p = p->lchild;
+        else if(p->value < x) p = p->rchild;
+        else return p;
+    }
+    return nullptr;
 }
 template <class T>
 void Binarysearchtree<T>::preordertraverse(Node<T>* a){
