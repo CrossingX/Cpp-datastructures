@@ -1,9 +1,8 @@
 /*
- * @Author: your name
+ * @Author: Crossing
  * @Date: 2019-12-07 21:06:44
- * @LastEditTime : 2019-12-20 16:22:58
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
+ * @LastEditTime : 2019-12-20 16:26:44
+ * @Description: Implemention of an AVLtree
  * @FilePath: /src/DS/Cpp-datastructures/AVLtree.h
  */
 #ifndef AVLTREE_H
