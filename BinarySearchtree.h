@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-06 23:46:19
- * @LastEditTime: 2019-12-07 16:40:30
+ * @LastEditTime : 2019-12-20 15:52:45
  * @Description: Implement a binary search tree using a linkedlist
  * @FilePath: /src/DS/Cpp-datastructures/BinarySearchtree.h
  */
@@ -49,22 +49,22 @@ Binarysearchtree<T>::~Binarysearchtree(){
 template <class T>
 void Binarysearchtree<T>::insertNode(T x, Node<T>* a){
     if(a == nullptr){
-        root = new Node<T>(x, nullptr, nullptr);
+        a = new Node<T>(x, nullptr, nullptr);
     }
     else{
         if(a->value > x){
             if(a->lchild != nullptr) insertNode(x, a->lchild);
-            else {
-                Node<T>* newNode = new Node<T>(x, nullptr, nullptr);
-                a->lchild = newNode;
-            }
+            // else {
+            //     Node<T>* newNode = new Node<T>(x, nullptr, nullptr);
+            //     a->lchild = newNode;
+            // }
         }
         else if(a->value < x) {
             if(a->rchild != nullptr) insertNode(x, a->rchild);
-            else {
-                Node<T>* newNode = new Node<T>(x, nullptr, nullptr);
-                a->rchild = newNode;
-            }
+            // else {
+            //     Node<T>* newNode = new Node<T>(x, nullptr, nullptr);
+            //     a->rchild = newNode;
+            // }
         }
     }
 }
