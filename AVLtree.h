@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-07 21:06:44
- * @LastEditTime : 2019-12-20 16:26:44
+ * @LastEditTime : 2019-12-20 19:49:50
  * @Description: Implemention of an AVLtree
  * @FilePath: /src/DS/Cpp-datastructures/AVLtree.h
  */
@@ -24,7 +24,7 @@ class AVLtree{
     public:
         AVLtree();
         ~AVLtree();
-        void insertNode(T x, Node<T>* p);
+        Node<T>*& insertNode(T x, Node<T>*& p);
         int getHeight(Node<T>* p);
         Node<T>* RRightRotation(Node<T>* p);
         Node<T>* LLeftRotation(Node<T>* p);
@@ -86,13 +86,14 @@ int AVLtree<T>::getHeight(Node<T>* p){
     return i>j?i+1:j+1;
 }
 template <class T>
-void AVLtree<T>::insertNode(T x, Node<T>* p){
+Node<T>*& AVLtree<T>::insertNode(T x, Node<T>*& p){
     if(p == nullptr){
         p = new Node<T>(x, nullptr, nullptr);
         p->height = 0;
+        return p;
     }
     else if(x < p->value){
-        insertNode(x, p->lchild);
+        p->lchild = insertNode(x, p->lchild);
         if(getHeight(p->lchild) - getHeight(p->rchild) == 2){
             if(x < p->lchild->value){
                 p = LLeftRotation(p);
@@ -110,6 +111,7 @@ void AVLtree<T>::insertNode(T x, Node<T>* p){
         }
     }
     p->height = (getHeight(p->lchild)>getHeight(p->rchild)?getHeight(p->lchild):getHeight(p->rchild)) + 1;
+    return p;
 }
 template <class T>
 void AVLtree<T>::destroyNode(Node<T>*& p){
