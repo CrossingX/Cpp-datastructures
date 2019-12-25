@@ -1,9 +1,8 @@
 /*
- * @Author: your name
+ * @Author: Crossing
  * @Date: 2019-12-25 21:16:42
- * @LastEditTime : 2019-12-26 00:18:32
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
+ * @LastEditTime : 2019-12-26 00:44:24
+ * @Description: Implement an Graph using adjacency list
  * @FilePath: /crossing/src/DS/Cpp-datastructures/Graph2.h
  */
 #ifndef GRAPH_H
