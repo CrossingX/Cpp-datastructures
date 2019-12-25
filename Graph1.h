@@ -1,10 +1,13 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-24 01:26:33
- * @LastEditTime : 2019-12-25 17:35:00
+ * @LastEditTime : 2019-12-26 00:09:48
  * @Description: Implement an Graph using adjacency matrix
  * @FilePath: /crossing/src/DS/Cpp-datastructures/Graph1.h
  */
+#ifndef GRAPH_H
+#define GRAPH_H
+
 #include<iostream>
 #include<queue>
 #define MAX_SIZE 1000
@@ -16,9 +19,10 @@ class Graph{
         Graph(T a[], int nv, int ne);
         ~Graph(){}
         void addVertex(T v);
-        void addEdge(int start,int end);
+        void addEdge(int start,int end, int w);
         void printMatrix();
         void DFS(int vertex);
+        void DFStraverse();
         void BFS(int vertex);
     private:
         int adjMatrix[MAX_SIZE][MAX_SIZE];
@@ -39,10 +43,10 @@ Graph<T>::Graph(T a[], int nv, int ne){
         }
     }
     for(int i=0;i<ne;i++){
-        int start, end;
-        cin>>start>>end;
-        adjMatrix[start][end] = 1;
-        adjMatrix[end][start] = 1;
+        int start, end, weight;
+        cin>>start>>end>>weight;
+        adjMatrix[start][end] = weight;
+        adjMatrix[end][start] = weight;
     }
 }
 template <class T>
@@ -54,9 +58,9 @@ void Graph<T>::addVertex(T v){
     Vertex[numVertex+1] = v;
 }
 template <class T>
-void Graph<T>::addEdge(int start,int end){
-    adjMatrix[start][end] = 1;
-    adjMatrix[end][start] = 1;
+void Graph<T>::addEdge(int start,int end, int w){
+    adjMatrix[start][end] = w;
+    adjMatrix[end][start] = w;
 }
 template <class T>
 void Graph<T>::printMatrix(){
@@ -71,7 +75,7 @@ void Graph<T>::DFS(int vertex){
     cout<<Vertex[vertex]<<endl;
     visited[vertex]=1;
     for(int i=0;i<numVertex;i++){
-        if(adjMatrix[vertex][i]==1 && visited[i]==0) DFS(i);
+        if(adjMatrix[vertex][i]!=0 && visited[i]==0) DFS(i);
     }
 }
 template <class T>
@@ -83,7 +87,7 @@ void Graph<T>::BFS(int vertex){
     // q.push(vertex);
     // while(!q.empty()){
     //     for(int i=0;i<numVertex;i++){
-    //         if(adjMatrix[q.front()][i]==1&&visited1[i]==0){
+    //         if(adjMatrix[q.front()][i]!=0&&visited1[i]==0){
     //             q.push(i);
     //             cout<<i<<endl;
     //             visited1[i]=1;
@@ -98,7 +102,7 @@ void Graph<T>::BFS(int vertex){
     while(!q.empty()){
         cout<<q.front()<<endl;
         for(int i=0;i<numVertex;i++){
-            if(adjMatrix[q.front()][i]==1&&visited1[i]==0){
+            if(adjMatrix[q.front()][i]!=0&&visited1[i]==0){
                 q.push(i);
                 visited1[i]=1;
             }
@@ -106,3 +110,15 @@ void Graph<T>::BFS(int vertex){
         q.pop();
     }
 }
+template <class T>
+void Graph<T>::DFStraverse(){
+    for(int i=0;i<numVertex;i++){
+        visited[i] = 0;
+    }
+    for(int i=0;i<numVertex;i++){
+        if(!visited[i]){
+            DFS(i);
+        }
+    }
+}
+#endif
