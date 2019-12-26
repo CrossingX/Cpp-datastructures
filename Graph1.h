@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-24 01:26:33
- * @LastEditTime : 2019-12-26 00:09:48
+ * @LastEditTime : 2019-12-26 16:16:42
  * @Description: Implement an Graph using adjacency matrix
  * @FilePath: /crossing/src/DS/Cpp-datastructures/Graph1.h
  */
@@ -23,7 +23,7 @@ class Graph{
         void printMatrix();
         void DFS(int vertex);
         void DFStraverse();
-        void BFS(int vertex);
+        void BFStraverse();
     private:
         int adjMatrix[MAX_SIZE][MAX_SIZE];
         int numVertex;
@@ -79,35 +79,24 @@ void Graph<T>::DFS(int vertex){
     }
 }
 template <class T>
-void Graph<T>::BFS(int vertex){
-    // queue<int> q;
-    // int visited1[MAX_SIZE] = {0};
-    // cout<<vertex<<endl;
-    // visited1[vertex]=1;
-    // q.push(vertex);
-    // while(!q.empty()){
-    //     for(int i=0;i<numVertex;i++){
-    //         if(adjMatrix[q.front()][i]!=0&&visited1[i]==0){
-    //             q.push(i);
-    //             cout<<i<<endl;
-    //             visited1[i]=1;
-    //         }
-    //     }
-    //     q.pop();
-    // }
-    queue<int> q;
+void Graph<T>::BFStraverse(){
     int visited1[MAX_SIZE] = {0};
-    visited1[vertex]=1;
-    q.push(vertex);
-    while(!q.empty()){
-        cout<<q.front()<<endl;
-        for(int i=0;i<numVertex;i++){
-            if(adjMatrix[q.front()][i]!=0&&visited1[i]==0){
-                q.push(i);
-                visited1[i]=1;
+    for(int k=0;k<numVertex;k++){
+        queue<int> q;
+        if(!visited1[k]){
+            visited1[k]=1;
+            q.push(k);
+            while(!q.empty()){
+                cout<<q.front()<<endl;
+                for(int i=0;i<numVertex;i++){
+                    if(adjMatrix[q.front()][i]!=0&&visited1[i]==0){
+                        q.push(i);
+                        visited1[i]=1;
+                    }
+                }
+                q.pop();
             }
         }
-        q.pop();
     }
 }
 template <class T>

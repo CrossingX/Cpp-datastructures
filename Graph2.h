@@ -1,7 +1,7 @@
 /*
  * @Author: Crossing
  * @Date: 2019-12-25 21:16:42
- * @LastEditTime : 2019-12-26 00:44:24
+ * @LastEditTime : 2019-12-26 16:14:41
  * @Description: Implement an Graph using adjacency list
  * @FilePath: /crossing/src/DS/Cpp-datastructures/Graph2.h
  */
@@ -35,7 +35,7 @@ class Graph{
         void printMatrix();
         void DFS(int vertex);
         void DFStraverse();
-        void BFS(int vertex);
+        void BFStraverse();
     private:
         VertexNode<T> adjList[MAX_SIZE];
         int numVertex;
@@ -100,22 +100,26 @@ void Graph<T>::DFS(int vertex){
     }
 }
 template <class T>
-void Graph<T>::BFS(int vertex){
-    queue<int> q;
+void Graph<T>::BFStraverse(){
     int visited1[MAX_SIZE] = {0};
-    visited1[vertex] = 1;
-    q.push(vertex);
-    while(!q.empty()){
-        cout<<q.front()<<endl;
-        EdgeNode* e = adjList[q.front()].firstedge;
-        while(e!=nullptr){
-            if(visited1[e->adjvex]==0){
-                q.push(e->adjvex);
-                visited1[e->adjvex] = 1;
+    for(int k=0;k<numVertex;k++){
+        queue<int> q;
+        if(!visited1[k]){
+            visited1[k] = 1;
+            q.push(k);
+            while(!q.empty()){
+                cout<<q.front()<<endl;
+                EdgeNode* e = adjList[q.front()].firstedge;
+                while(e!=nullptr){
+                    if(visited1[e->adjvex]==0){
+                        q.push(e->adjvex);
+                        visited1[e->adjvex] = 1;
+                    }
+                    e = e->next;
+                }
+                q.pop();
             }
-            e = e->next;
         }
-        q.pop();
     }
 }
 template <class T>
